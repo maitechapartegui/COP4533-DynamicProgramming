@@ -1,6 +1,4 @@
 # COP4533-DynamicProgramming
-Highest Value Longest Common Sequence
-
 **Students:**
 
 Heiryn Hernandez Rojas - 90988659
