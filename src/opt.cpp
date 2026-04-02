@@ -33,12 +33,11 @@ int main(int argc, char** argv) {
 
 	// first line should be numver of letters
 	int numofAlphabets;
-	in >> numofAlphabets;
 	if (!(in >> numofAlphabets)) {
 		throw runtime_error("Could not read K");
 	}
 	// get all the alphabet values create a dictonary/map wher alphabet['a'] = 4
-	unordered_map<string, int> alphabetValues;
+	unordered_map<char, int> alphabetValues;
 	char currentLetter;
 	int currentValue = 0;
 	for (int i = 0; i < numofAlphabets; ++i) {
@@ -56,6 +55,38 @@ int main(int argc, char** argv) {
 	string stringB;
 	in >> stringA;
 	in >> stringB;
+	//OPT: max total value of all possible substrings with i characters from A and j chracters of B
+	// Recusive functions - Bottom up!! remember
+	// if they match: values are the same so add the values v + opt(i-1, j-1)
+	// if they dont match: find max of basically skipping either letter max ( opt(i,j-1) , opt(i-1, j) )
 
 	//OPT: go through every number that is not the length so while we are not at the max lenght of A or B THEN....
+
+	//opt 2d array:
+	vector<vector<int>> M;
+	// TODO: NEED BASE CASES
+	int matchCost = 0;
+	int notMatchCost = 0;
+	for (int i = 0; i < stringA.length(); ++i) {
+		for (int j = 0; j < stringB.length(); ++j) {
+			//FIRST need to check if substring are equal
+			if (stringA[i] == stringB[j]) {
+				// handle subproblems!
+				//v + opt(i-1, j-1)
+				int value = alphabetValues[stringA[i]];
+				matchCost = value + M[stringA[i-1]][stringB[j-1]];
+			}
+			else {
+				//TODO: fix this cause this cant be right?
+				//max ( opt(i,j-1) , opt(i-1, j) )
+				notMatchCost = max()
+			}
+			M[stringA[i]][stringB[j]] = max (matchCost,notMatchCost);
+		}
+	}
+	// return that max final value which will be m x n
+	maxFinalValue = M[stringA.length() - 1][stringB.length() - 1];
+
+	// TODO: NEED TO DO BACKTRACKING TO RETURN CORRESPONDING SUBSEQUENCE
+
 }
