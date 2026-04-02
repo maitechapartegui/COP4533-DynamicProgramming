@@ -64,9 +64,18 @@ int main(int argc, char** argv) {
 
 	//opt 2d array:
 	vector<vector<int>> M;
-	// TODO: NEED BASE CASES
+	M.resize(stringA.length() + 1, vector<int>(stringB.length() + 1, 0));.
+	// base cases similar to alignment problem:
+	for (int i = 0; i < stringA.length(); ++i) {
+		M[i][0] = 0;
+	}
+	for (int j = 0; j < stringB.length(); ++j) {
+		M[0][j] = 0;
+	}
+
 	int matchCost = 0;
 	int notMatchCost = 0;
+	// TODO: look at indexes bc i confused myself
 	for (int i = 0; i < stringA.length(); ++i) {
 		for (int j = 0; j < stringB.length(); ++j) {
 			//FIRST need to check if substring are equal
@@ -81,13 +90,13 @@ int main(int argc, char** argv) {
 			else {
 				//TODO: fix this cause this cant be right?
 				//max ( opt(i,j-1) , opt(i-1, j) )
-				notMatchCost = max()
+				notMatchCost = max(M[i][j-1], M[i-1][j])
 			}
-			M[stringA[i]][stringB[j]] = max (matchCost,notMatchCost);
+			M[i][j] = max (matchCost,notMatchCost);
 		}
 	}
 	// return that max final value which will be m x n
-	maxFinalValue = M[stringA.length() - 1][stringB.length() - 1];
+	maxFinalValue = M[stringA.length()][stringB.length()];
 
 	// TODO: NEED TO DO BACKTRACKING TO RETURN CORRESPONDING SUBSEQUENCE
 
