@@ -73,8 +73,10 @@ int main(int argc, char** argv) {
 			if (stringA[i] == stringB[j]) {
 				// handle subproblems!
 				//v + opt(i-1, j-1)
+				// NEED THE CHARACTER so we do stringA[i]
 				int value = alphabetValues[stringA[i]];
-				matchCost = value + M[stringA[i-1]][stringB[j-1]];
+				// need the index in M so we do [i][j] not stringA[i]
+				matchCost = value + M[i-1][j-1];
 			}
 			else {
 				//TODO: fix this cause this cant be right?
