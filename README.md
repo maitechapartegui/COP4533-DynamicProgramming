@@ -17,7 +17,7 @@ Our program is written in C++
 To compile the code,
 
 1. Clone the repo on your device:
-* git clone 
+* git clone https://github.com/maitechapartegui/COP4533-DynamicProgramming.git
 
 2. Compile in VSCode (or IDE of your choosing) terminal
 * g++ -std=c++17 ./src/opt.cpp -o opt
