@@ -35,6 +35,6 @@ Using the C++ <chrono> library:
     - `auto start = chrono::high_resolution_clock::now();`
     - `auto end = chrono::high_resolution_clock::now();`
     - `auto duration = chrono::duration_cast<chrono::nanoseconds>(end - start);`
-
-![Question 1 Runtime Graph](runtimeGraph.png) 
+      *As you can see with the graph: our algorithm follows the theta(mxm) trend. This means that it is correctly aligned with the expected trend. As we are going through two for loops that each run all m and all n times*
+      ![Question 1 Runtime Graph](newruntimeGraph.png) 
 
