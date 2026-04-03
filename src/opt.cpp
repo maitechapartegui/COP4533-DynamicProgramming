@@ -75,11 +75,10 @@ int main(int argc, char** argv) {
 
 	int matchCost = 0;
 	int notMatchCost = 0;
-	// TODO: look at indexes bc i confused myself
-	for (int i = 0; i < stringA.length(); ++i) {
-		for (int j = 0; j < stringB.length(); ++j) {
+	for (int i = 1; i < stringA.length(); ++i) {
+		for (int j = 1; j < stringB.length(); ++j) {
 			//FIRST need to check if substring are equal
-			if (stringA[i] == stringB[j]) {
+			if (stringA[i-1] == stringB[j-1]) {
 				// handle subproblems!
 				//v + opt(i-1, j-1)
 				// NEED THE CHARACTER so we do stringA[i]
@@ -88,7 +87,6 @@ int main(int argc, char** argv) {
 				matchCost = value + M[i-1][j-1];
 			}
 			else {
-				//TODO: fix this cause this cant be right?
 				//max ( opt(i,j-1) , opt(i-1, j) )
 				notMatchCost = max(M[i][j-1], M[i-1][j])
 			}
