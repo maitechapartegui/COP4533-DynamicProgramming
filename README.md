@@ -36,5 +36,5 @@ Using the C++ <chrono> library:
     - `auto end = chrono::high_resolution_clock::now();`
     - `auto duration = chrono::duration_cast<chrono::nanoseconds>(end - start);`
 
-![Question 1 Runtime Graph](newRuntimeGraph.png) 
+![Question 1 Runtime Graph](newruntimeGraph.png) 
 
