@@ -40,17 +40,17 @@ Using the C++ <chrono> library:
 
 ### Question 2: Recurrence Equation
 Assumptions:
-A and B are input string
-v(x) is value of character x
-M[i][j] = maximum value of common subsequence, where i ranges from (0,m) and j ranges from (0,n)
+- A and B are input string
+- v(x) is value of character x
+- M[i][j] = maximum value of common subsequence, where i ranges from (0,m) and j ranges from (0,n)
 
 Base Cases:
-If i = 0, then M[0][j] = 0
-If j = 0, then M[i][0] = 0
+- If i = 0, then M[0][j] = 0
+- If j = 0, then M[i][0] = 0
 
 Recurrence:
-M[i][j] = v(A[i]) + M[i-1][j-1]       if A[i] == B[j]
-M[i][j] = max(M[i-1][j], M[i][j-1])   if A[i] != B[j]
+- M[i][j] = v(A[i]) + M[i-1][j-1]       if A[i] == B[j]
+- M[i][j] = max(M[i-1][j], M[i][j-1])   if A[i] != B[j]
 
 Explanation:
 This recurrence is correct because for each cell M[i][j] we are solving the most optimal value for the first i letters of A and the first j letters of B. We check for two cases, either the last characters match, so we can take that character in our subsequence and add its value or the last characters do not match, so we cannot take both of them as a matched pair, meaning the optimal subsequence must skip one side, so we take the maximum value between the two max(M[i-1][j], M[i][j-1])).
