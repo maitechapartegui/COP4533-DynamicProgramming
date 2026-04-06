@@ -49,12 +49,8 @@ If i = 0, then M[0][j] = 0
 If j = 0, then M[i][0] = 0
 
 Recurrence:
-for i > 0 and j > 0:
-  // we must check if the characters match
-  if A[i-1] == B[j-1], we take this character
-    M[i][j] = M[i-1][j-1] + v(A[i-1])
-  else if characters dont match, we take the maximum value between the two characters
-    M[i][j] = max(M[i-1][j], M[i][j-1])
+M[i][j] = v(A[i]) + M[i-1][j-1]       if A[i] == B[j]
+M[i][j] = max(M[i-1][j], M[i][j-1])   if A[i] != B[j]
 
 Explanation:
 This recurrence is correct because for each cell M[i][j] we are solving the most optimal value for the first i letters of A and the first j letters of B. We check for two cases, either the last characters match, so we can take that character in our subsequence and add its value or the last characters do not match, so we cannot take both of them as a matched pair, meaning the optimal subsequence must skip one side, so we take the maximum value between the two max(M[i-1][j], M[i][j-1])).
