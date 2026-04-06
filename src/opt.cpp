@@ -118,6 +118,46 @@ int main(int argc, char** argv) {
 
 
 
-	// TODO: NEED TO DO BACKTRACKING TO RETURN CORRESPONDING SUBSEQUENCE
+	// BACKTRACKING
+	// walk backwards from M[m][n]
+	// then need to check if letters match and if the value makes sense
+
+	string subseq;
+	int i = stringA.length();
+	int j = stringB.length();
+
+	while(i > 0 && j > 0) {
+		// if chars match 
+		if(stringA[i - 1] == stringB[j - 1]){
+			int value = alphabetValues[stringA[i - 1]];
+			// check if cell came from diagonal plus value -> take this char
+			if(M[i][j] == M[i - 1][j - 1] + value){
+				subseq.push_back(stringA[i - 1]);
+				// move diagonally
+				i--;
+				j--;
+				continue;
+			}	
+		}
+
+		// didnt take char bc dont match -> move ib direction of where the max val came from
+		if (M[i - 1][j] >= M[i][j - 1]){
+			// go up
+			i--;
+		}
+		else{
+			// go left
+			j--;
+		}
+	}
+
+	reverse(subseq.begin(), subseq.end());
+
+	// write max value and subseq
+	out.open(outputFile, ios::app);
+	out << subseq << endl;
+	out.close();
+	cout << "Subsequence: " << subseq << endl;
+
 	return 0;
 }
