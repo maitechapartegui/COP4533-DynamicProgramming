@@ -56,20 +56,21 @@ Explanation:
 This recurrence is correct because for each cell M[i][j] we are solving the most optimal value for the first i letters of A and the first j letters of B. We check for two cases, either the last characters match, so we can take that character in our subsequence and add its value or the last characters do not match, so we cannot take both of them as a matched pair, meaning the optimal subsequence must skip one side, so we take the maximum value between the two max(M[i-1][j], M[i][j-1])).
 
 ### Question 3: Big-Oh
-HVLCSLength(A, B, v):
+    HVLCSLength(A, B, v):
+    
     m = length(A)
     n = length(B)
    
-   create 2d array M of size (m+1) x (n+1) where M[i][j] is the max total value
+    create 2d array M of size (m+1) x (n+1) where M[i][j] is the max total value
 
-  // base cases
-  for i = 0 to m:
+    // base cases
+    for i = 0 to m:
         M[i][0] = 0
-  for j = 0 to n:
+    for j = 0 to n:
         M[0][j] = 0
 
-  // fill table in bottom up
-  for i = 1 to m:
+    // fill table in bottom up
+    for i = 1 to m:
         for j = 1 to n:
             if A[i-1] == B[j-1]:
                 M[i][j] = M[i-1][j-1] + v(A[i-1])
@@ -82,7 +83,7 @@ HVLCSLength(A, B, v):
             else:
                 M[i][j] = max(M[i-1][j], M[i][j-1])
     
-   return M[m][n]
+     return M[m][n]
 
 
 - Runtime:
