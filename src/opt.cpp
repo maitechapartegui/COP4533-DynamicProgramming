@@ -114,7 +114,7 @@ int main(int argc, char** argv) {
 	out << maxFinalValue << endl;
 	out.close();
 	cout<< "Max Final value: " << maxFinalValue << endl;
-	cout << "file:" <<  outputFile << endl << ", time: in ns " << duration.count() << endl;
+	//cout << "file:" <<  outputFile << endl << ", time: in ns " << duration.count() << endl;
 
 
 
